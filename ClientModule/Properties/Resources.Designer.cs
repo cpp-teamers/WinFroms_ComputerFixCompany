@@ -63,9 +63,29 @@ namespace ClientModule.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clientImageIco {
+            get {
+                object obj = ResourceManager.GetObject("clientImageIco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap happyPC {
             get {
                 object obj = ResourceManager.GetObject("happyPC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logInButton {
+            get {
+                object obj = ResourceManager.GetObject("logInButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
