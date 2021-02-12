@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace RepairManModule
 {
-    public partial class Form1 : Form
-    {
+	public partial class RepairManLogInForm : Form
+	{
+		public RepairManLogInForm()
+		{
+			InitializeComponent();
+		}
 
+		private void LogInButton_Click(object sender, EventArgs e)
+		{
 
-        public Form1()
-        {
-            InitializeComponent();
-        }
-    }
+		}
+	}
 }
