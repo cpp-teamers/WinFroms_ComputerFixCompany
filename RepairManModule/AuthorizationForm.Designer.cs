@@ -50,7 +50,7 @@ namespace RepairManModule
 			// 
 			// AuthNameField
 			// 
-			this.AuthNameField.ForeColor = System.Drawing.Color.Gainsboro;
+			this.AuthNameField.ForeColor = System.Drawing.Color.Black;
 			this.AuthNameField.Location = new System.Drawing.Point(34, 61);
 			this.AuthNameField.Name = "AuthNameField";
 			this.AuthNameField.Size = new System.Drawing.Size(220, 35);
@@ -76,7 +76,7 @@ namespace RepairManModule
 			// 
 			// AuthPasswordField
 			// 
-			this.AuthPasswordField.ForeColor = System.Drawing.Color.Gainsboro;
+			this.AuthPasswordField.ForeColor = System.Drawing.Color.Black;
 			this.AuthPasswordField.Location = new System.Drawing.Point(34, 140);
 			this.AuthPasswordField.Name = "AuthPasswordField";
 			this.AuthPasswordField.Size = new System.Drawing.Size(220, 35);
