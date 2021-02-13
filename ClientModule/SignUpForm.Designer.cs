@@ -37,7 +37,6 @@ namespace ClientModule
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.TextBox();
             this.name = new System.Windows.Forms.TextBox();
             this.patronymic = new System.Windows.Forms.TextBox();
             this.surname = new System.Windows.Forms.TextBox();
@@ -51,6 +50,8 @@ namespace ClientModule
             this.show = new System.Windows.Forms.CheckBox();
             this.block = new System.Windows.Forms.ComboBox();
             this.level = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@ namespace ClientModule
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(115, 211);
+            this.label1.Location = new System.Drawing.Point(102, 212);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 24);
             this.label1.TabIndex = 1;
@@ -127,14 +128,6 @@ namespace ClientModule
             this.label10.Size = new System.Drawing.Size(192, 24);
             this.label10.TabIndex = 10;
             this.label10.Text = "Number of apartment:";
-            // 
-            // id
-            // 
-            this.id.ForeColor = System.Drawing.Color.Red;
-            this.id.Location = new System.Drawing.Point(226, 206);
-            this.id.Name = "id";
-            this.id.Size = new System.Drawing.Size(181, 29);
-            this.id.TabIndex = 11;
             // 
             // name
             // 
@@ -277,11 +270,33 @@ namespace ClientModule
             this.level.Size = new System.Drawing.Size(0, 24);
             this.level.TabIndex = 26;
             // 
+            // id
+            // 
+            this.id.ForeColor = System.Drawing.Color.Red;
+            this.id.Location = new System.Drawing.Point(206, 207);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(133, 29);
+            this.id.TabIndex = 27;
+            this.id.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(397, 347);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(74, 24);
+            this.linkLabel1.TabIndex = 28;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "no city?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 615);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.id);
             this.Controls.Add(this.level);
             this.Controls.Add(this.block);
             this.Controls.Add(this.show);
@@ -295,7 +310,6 @@ namespace ClientModule
             this.Controls.Add(this.surname);
             this.Controls.Add(this.patronymic);
             this.Controls.Add(this.name);
-            this.Controls.Add(this.id);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -306,10 +320,12 @@ namespace ClientModule
             this.Controls.Add(this.create);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
+            this.MaximizeBox = false;
             this.Name = "SignUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SignUpForm";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
+            this.Shown += new System.EventHandler(this.SignUpForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -326,7 +342,6 @@ namespace ClientModule
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox id;
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.TextBox patronymic;
         private System.Windows.Forms.TextBox surname;
@@ -340,5 +355,7 @@ namespace ClientModule
         private System.Windows.Forms.CheckBox show;
         private System.Windows.Forms.ComboBox block;
         private System.Windows.Forms.Label level;
+        private System.Windows.Forms.TextBox id;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
