@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Xml.Linq;
+using LibraryExceptions;
 
 namespace RepairManModule.Helpers
 {
@@ -134,7 +135,7 @@ namespace RepairManModule.Helpers
 
             if (real_pasw != enteredPass)
 			{
-                throw new Exception("Password is incorrect");
+                throw new PasswordException("Password is incorrect", enteredPass);
 			}
 
             return true;
