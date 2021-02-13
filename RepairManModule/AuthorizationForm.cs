@@ -8,27 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace RepairManModule
 {
-	public partial class RepairManLogInForm : Form
+	public partial class AuthorizationForm : Form
 	{
-		public RepairManLogInForm()
+
+		public AuthorizationForm()
 		{
 			InitializeComponent();
 		}
 
-		private void LogInButton_Click(object sender, EventArgs e)
+		private void LogInOkButton_Click(object sender, EventArgs e)
 		{
-			AuthorizationForm af = new AuthorizationForm();
-
-			if (af.ShowDialog() == DialogResult.OK)
+			try
 			{
 				
+				//AuthNameField.
+			}
+			catch (Exception err)
+			{
+				MessageBox.Show($"{err.Message}", "Warning",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
-
-
-
-
 	}
 }
