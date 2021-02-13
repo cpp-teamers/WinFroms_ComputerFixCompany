@@ -13,6 +13,24 @@ namespace ClientModule
         public string ID { get; set; }
         public void Registration(Client client)
         {
+            //client.AccountData.Login;
+            // Очень важное смс - нужно запомнить свой id для того, чтобы потом залогиниться
+           // Console.Write($"\n\n Here is your id -> ");
+            //Console.ForegroundColor = ConsoleColor.Red;
+            //Console.Write($"{LoginId}");
+            //Console.ForegroundColor = ConsoleColor.White;
+            //Console.Write(" <- Please, remember that. Press any key to continue.");
+            //Console.ReadKey();
+            // создание папки с названием = id клиента
+            //DirectoryInfo directoryInfo = Directory.CreateDirectory(Convert.ToString(path));
+            // Ввод параметров клиента с консоли
+            //cd.CreateClient(client, LoginId);
+            // Сохранение клиента в dat файл
+            //SaveClient(client);
+        }
+
+        public string Unique_Id()
+        {
             Random random = new Random();
 
             string LoginId = Convert.ToString(random.Next(100000, 999999));
@@ -28,30 +46,17 @@ namespace ClientModule
                 counterRescuer++;
                 if (counterRescuer == 999999)
                 {
-                   // Console.WriteLine("ADMIIIIIN"); // Notifier !!!!!!!!!!!!
+                    // Console.WriteLine("ADMIIIIIN"); // Notifier !!!!!!!!!!!!
                     break;
                 }
             }
-
-            // Очень важное смс - нужно запомнить свой id для того, чтобы потом залогиниться
-           // Console.Write($"\n\n Here is your id -> ");
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write($"{LoginId}");
-            //Console.ForegroundColor = ConsoleColor.White;
-            //Console.Write(" <- Please, remember that. Press any key to continue.");
-            //Console.ReadKey();
-            // создание папки с названием = id клиента
-            DirectoryInfo directoryInfo = Directory.CreateDirectory(Convert.ToString(path));
-            // Ввод параметров клиента с консоли
-            ID = LoginId;
-            //cd.CreateClient(client, LoginId);
-            // Сохранение клиента в dat файл
-            //SaveClient(client);
+            return LoginId;
         }
-
         public void SaveClient(Client client)
         {
-            string path = $@"..\..\..\Data\clients\{client.AccountData.Login}\data.dat";
+            string path = $@"..\..\..\Data\clients\{client.AccountData.Login}";
+            DirectoryInfo directoryInfo = Directory.CreateDirectory(Convert.ToString(path));
+            path += @"\data.dat";
             using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
             {
                 bf.Serialize(fs, client);
