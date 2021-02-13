@@ -40,7 +40,7 @@ namespace RepairManModule
 			// LogInButton
 			// 
 			this.LogInButton.Location = new System.Drawing.Point(344, 160);
-			this.LogInButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.LogInButton.Margin = new System.Windows.Forms.Padding(7);
 			this.LogInButton.Name = "LogInButton";
 			this.LogInButton.Size = new System.Drawing.Size(165, 69);
 			this.LogInButton.TabIndex = 0;
@@ -87,7 +87,8 @@ namespace RepairManModule
 			this.Controls.Add(this.LogInButton);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.Margin = new System.Windows.Forms.Padding(7);
+			this.MaximizeBox = false;
 			this.Name = "RepairManLogInForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Log In";
