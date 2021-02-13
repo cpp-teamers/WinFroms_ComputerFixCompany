@@ -29,17 +29,21 @@ namespace RepairManModule
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepairManLogInForm));
 			this.LogInButton = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.timer2 = new System.Windows.Forms.Timer(this.components);
+			this.label3 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// LogInButton
 			// 
-			this.LogInButton.Location = new System.Drawing.Point(344, 160);
+			this.LogInButton.Location = new System.Drawing.Point(342, 160);
 			this.LogInButton.Margin = new System.Windows.Forms.Padding(7);
 			this.LogInButton.Name = "LogInButton";
 			this.LogInButton.Size = new System.Drawing.Size(165, 69);
@@ -70,17 +74,37 @@ namespace RepairManModule
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(339, 106);
+			this.label2.Location = new System.Drawing.Point(337, 106);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(170, 29);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Log in, please.";
 			// 
+			// timer1
+			// 
+			this.timer1.Interval = 60000;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// timer2
+			// 
+			this.timer2.Interval = 1000;
+			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(517, 180);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(0, 29);
+			this.label3.TabIndex = 4;
+			this.label3.Visible = false;
+			// 
 			// RepairManLogInForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(601, 299);
+			this.ClientSize = new System.Drawing.Size(648, 299);
+			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBox1);
@@ -104,5 +128,8 @@ namespace RepairManModule
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Timer timer2;
+		private System.Windows.Forms.Label label3;
 	}
 }

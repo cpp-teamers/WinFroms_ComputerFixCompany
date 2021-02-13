@@ -9,21 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using RepairManModule.Helpers;
+using LibraryExceptions;
 
 namespace RepairManModule
 {
 	public partial class AuthorizationForm : Form
 	{
 		RepairManDataManager rmdm;
+		public int Count_of_attempts { get; set; }
+
 
 		public AuthorizationForm()
 		{
 			InitializeComponent();
 			rmdm = new RepairManDataManager();
+			Count_of_attempts = 3;
 		}
 
 		private void LogInOkButton_Click(object sender, EventArgs e)
 		{
+
 			try
 			{
 				string name = AuthNameField.Text;
@@ -55,14 +60,36 @@ namespace RepairManModule
 
 				DialogResult = DialogResult.OK;
 			}
+			catch (PasswordException pass_err)
+			{
+				--Count_of_attempts;
+
+				MessageBox.Show($"{pass_err.Message}. You've got {Count_of_attempts} shots",
+					"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				
+				ClearFields();
+			}
 			catch (Exception err)
 			{
 				MessageBox.Show($"{err.Message}", "Warning",
 					MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
+			finally
+			{
+				if (Count_of_attempts == 0)
+				{
+					DialogResult = DialogResult.Abort;
+				}
+			}
+			
+			
 		}
 
-
+		void ClearFields()
+		{
+			AuthNameField.Clear();
+			AuthPasswordField.Clear();
+		}
 
 
 	}
