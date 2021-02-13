@@ -107,6 +107,10 @@
       <Project>{e0388e8f-a272-449b-b2d8-7ea438aca0b0}</Project>
       <Name>Library1</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibraryExceptions\LibraryExceptions.csproj">
+      <Project>{3a06bdaa-f092-4a4d-955c-f82c4e3f596f}</Project>
+      <Name>LibraryExceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\client.ico" />
