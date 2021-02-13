@@ -212,7 +212,7 @@ namespace ClientModule
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ClientModule.Properties.Resources.clientImageIco;
-            this.pictureBox1.Location = new System.Drawing.Point(164, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(171, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(208, 190);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

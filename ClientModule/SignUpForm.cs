@@ -52,7 +52,7 @@ namespace ClientModule
         // If user input no data
         private void name_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(name.Text))
+            if (String.IsNullOrWhiteSpace(name.Text))
             {
                 name.Text = "Name";
                 name.ForeColor = Color.Gray;
@@ -101,7 +101,6 @@ namespace ClientModule
             client.Age = Convert.ToInt32(age); //  !!!! !!!! !!!! !!!! !!!!!! !!!!! !! !!!!! !!!!!! 
 
         }
-
         private void show_CheckedChanged(object sender, EventArgs e)
         {
             if (show.Checked)
