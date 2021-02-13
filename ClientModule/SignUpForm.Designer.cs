@@ -43,13 +43,14 @@ namespace ClientModule
             this.surname = new System.Windows.Forms.TextBox();
             this.age = new System.Windows.Forms.TextBox();
             this.street = new System.Windows.Forms.TextBox();
-            this.block = new System.Windows.Forms.TextBox();
             this.apartment = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.city = new System.Windows.Forms.ComboBox();
             this.show = new System.Windows.Forms.CheckBox();
+            this.block = new System.Windows.Forms.ComboBox();
+            this.level = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +77,7 @@ namespace ClientModule
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(189, 304);
+            this.label5.Location = new System.Drawing.Point(182, 304);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 24);
             this.label5.TabIndex = 5;
@@ -85,7 +86,7 @@ namespace ClientModule
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(194, 347);
+            this.label6.Location = new System.Drawing.Point(187, 347);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 24);
             this.label6.TabIndex = 6;
@@ -94,7 +95,7 @@ namespace ClientModule
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(176, 384);
+            this.label7.Location = new System.Drawing.Point(169, 384);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 24);
             this.label7.TabIndex = 7;
@@ -103,7 +104,7 @@ namespace ClientModule
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(85, 421);
+            this.label8.Location = new System.Drawing.Point(78, 421);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(154, 24);
             this.label8.TabIndex = 8;
@@ -112,7 +113,7 @@ namespace ClientModule
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(142, 491);
+            this.label9.Location = new System.Drawing.Point(135, 491);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 24);
             this.label9.TabIndex = 9;
@@ -121,7 +122,7 @@ namespace ClientModule
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(47, 456);
+            this.label10.Location = new System.Drawing.Point(40, 456);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(192, 24);
             this.label10.TabIndex = 10;
@@ -167,43 +168,37 @@ namespace ClientModule
             // 
             // age
             // 
-            this.age.Location = new System.Drawing.Point(252, 299);
+            this.age.Location = new System.Drawing.Point(245, 299);
             this.age.Name = "age";
             this.age.Size = new System.Drawing.Size(62, 29);
             this.age.TabIndex = 16;
             // 
             // street
             // 
-            this.street.Location = new System.Drawing.Point(252, 379);
+            this.street.Location = new System.Drawing.Point(245, 379);
             this.street.Name = "street";
             this.street.Size = new System.Drawing.Size(121, 29);
             this.street.TabIndex = 17;
             // 
-            // block
-            // 
-            this.block.Location = new System.Drawing.Point(252, 416);
-            this.block.Name = "block";
-            this.block.Size = new System.Drawing.Size(75, 29);
-            this.block.TabIndex = 18;
-            // 
             // apartment
             // 
-            this.apartment.Location = new System.Drawing.Point(252, 451);
+            this.apartment.Location = new System.Drawing.Point(245, 451);
             this.apartment.Name = "apartment";
             this.apartment.Size = new System.Drawing.Size(75, 29);
             this.apartment.TabIndex = 19;
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(252, 486);
+            this.password.Location = new System.Drawing.Point(245, 486);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(181, 29);
             this.password.TabIndex = 20;
+            this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(331, 304);
+            this.label11.Location = new System.Drawing.Point(324, 304);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 24);
             this.label11.TabIndex = 21;
@@ -224,8 +219,11 @@ namespace ClientModule
             this.city.FormattingEnabled = true;
             this.city.Items.AddRange(new object[] {
             "Kyiv",
-            ""});
-            this.city.Location = new System.Drawing.Point(252, 339);
+            "Kharkov",
+            "Lviv",
+            "Ternopil",
+            "Odessa"});
+            this.city.Location = new System.Drawing.Point(245, 339);
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(121, 32);
             this.city.TabIndex = 23;
@@ -234,7 +232,7 @@ namespace ClientModule
             // 
             this.show.AutoSize = true;
             this.show.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.show.Location = new System.Drawing.Point(252, 521);
+            this.show.Location = new System.Drawing.Point(245, 521);
             this.show.Name = "show";
             this.show.Size = new System.Drawing.Size(60, 20);
             this.show.TabIndex = 24;
@@ -242,18 +240,56 @@ namespace ClientModule
             this.show.UseVisualStyleBackColor = true;
             this.show.CheckedChanged += new System.EventHandler(this.show_CheckedChanged);
             // 
+            // block
+            // 
+            this.block.FormattingEnabled = true;
+            this.block.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.block.Location = new System.Drawing.Point(245, 414);
+            this.block.Name = "block";
+            this.block.Size = new System.Drawing.Size(75, 32);
+            this.block.TabIndex = 25;
+            // 
+            // level
+            // 
+            this.level.AutoSize = true;
+            this.level.Location = new System.Drawing.Point(442, 491);
+            this.level.Name = "level";
+            this.level.Size = new System.Drawing.Size(0, 24);
+            this.level.TabIndex = 26;
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 615);
+            this.Controls.Add(this.level);
+            this.Controls.Add(this.block);
             this.Controls.Add(this.show);
             this.Controls.Add(this.city);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.password);
             this.Controls.Add(this.apartment);
-            this.Controls.Add(this.block);
             this.Controls.Add(this.street);
             this.Controls.Add(this.age);
             this.Controls.Add(this.surname);
@@ -296,12 +332,13 @@ namespace ClientModule
         private System.Windows.Forms.TextBox surname;
         private System.Windows.Forms.TextBox age;
         private System.Windows.Forms.TextBox street;
-        private System.Windows.Forms.TextBox block;
         private System.Windows.Forms.TextBox apartment;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox city;
         private System.Windows.Forms.CheckBox show;
+        private System.Windows.Forms.ComboBox block;
+        private System.Windows.Forms.Label level;
     }
 }

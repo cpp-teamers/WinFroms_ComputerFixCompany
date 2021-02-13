@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LibraryExceptions
 {
-    public class AgeLimitException : BaseException
+    public class FullNameException : BaseException
     {
-        public AgeLimitException(string message, string parametr) : base(message, parametr)
+        public FullNameException(string message, string parametr) : base(message, parametr)
         { }
     }
 }
