@@ -19,6 +19,6 @@
   <Experience>0</Experience>
   <IsFree>false</IsFree>
   <PathsOfOrders>
-    <string>..\..\..\..\Data\clients\270318\1.dat</string>
+    <string>..\..\..\Data\clients\270318\1.dat</string>
   </PathsOfOrders>
 </RepairMan>
