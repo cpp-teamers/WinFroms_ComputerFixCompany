@@ -20,6 +20,10 @@ namespace RepairManModule
 		readonly List<OrderType> order_types;
 		readonly List<string> actualities;
 
+		Order current_task;
+
+		bool first_Ready_RadioClick = true;
+		bool first_InProc_RadioClick = true;
 
 		public Form1(in RepairManDataManager entry_Manager)
 		{
@@ -41,25 +45,37 @@ namespace RepairManModule
 
 			orderTypesBox.DataSource = order_types;
 			actualityBox.DataSource = actualities;
+
+
+			LoadDataToListBox();
+
+			MarkTasksProgress.Enabled = false;
+
+			// directed to account with 0 tasks !1!
+			if (taskList.Items.Count == 0)
+			{
+				readyRadioB.Enabled = false;
+				InProcessRadioB.Enabled = false;
+			}
+		}
+
+		void LoadDataToListBox()
+		{
 			taskList.DataSource = current_manager.LoadTasks();
-
-
-
-
-
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			welcomeEmpLabel.Text = $"Welcome, {current_manager.rm.Name}.";
-
 		}
 
 		private void taskList_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			taskList.SelectedIndex = 0;
+			
 
-			Order current_task = (taskList.SelectedItem as Order);
+			MarkTasksProgress.Enabled = false;
+
+			current_task = taskList.SelectedItem as Order;
 
 			// setting categories
 
@@ -95,6 +111,78 @@ namespace RepairManModule
 
 			descriptionOfTask.Text = current_task.Description;
 
+			if (current_task.Actual)
+			{
+				InProcessRadioB.Checked = true;
+				readyRadioB.Checked = false;
+			}
+			else
+			{
+				InProcessRadioB.Checked = false;
+				readyRadioB.Checked = true;
+			}
+
+			// directed to account with 0 tasks !2!
+			if (taskList.Items.Count > 0)
+			{
+				readyRadioB.Enabled = true;
+				InProcessRadioB.Enabled = true;
+			}
 		}
+
+		private void MarkTasksProgress_Click(object sender, EventArgs e)
+		{
+			if (readyRadioB.Checked)
+			{
+				current_manager.curr_order[taskList.SelectedIndex].Actual = false;
+			}
+			else
+			{
+				current_manager.curr_order[taskList.SelectedIndex].Actual = true;
+			}
+
+			current_manager.SaveTasks();
+			MessageBox.Show("Progress has been marked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void InProcessRadioB_Click(object sender, EventArgs e)
+		{
+			if (first_InProc_RadioClick)
+			{
+				first_InProc_RadioClick = false;
+			}
+			else
+			{
+				UnableMaskProgressButton();
+			}
+
+
+		}
+
+		private void readyRadioB_Click(object sender, EventArgs e)
+		{
+			if (first_Ready_RadioClick)
+			{
+				first_Ready_RadioClick = false;
+			}
+			else
+			{
+				UnableMaskProgressButton();
+			}
+		}
+
+		void UnableMaskProgressButton()
+		{
+			MarkTasksProgress.Enabled = true;
+			timer1.Start();
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			MarkTasksProgress.Enabled = false;
+			timer1.Stop();
+		}
+
+		
 	}
 }
