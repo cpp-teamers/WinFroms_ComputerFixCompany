@@ -34,7 +34,7 @@ namespace RepairManModule
 			this.taskList = new System.Windows.Forms.ListBox();
 			this.orderTypesBox = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.descriptionTypes = new System.Windows.Forms.TextBox();
+			this.descriptionOfTask = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -52,9 +52,11 @@ namespace RepairManModule
 			// 
 			// taskList
 			// 
+			this.taskList.DisplayMember = "DeadLine";
 			this.taskList.FormattingEnabled = true;
 			resources.ApplyResources(this.taskList, "taskList");
 			this.taskList.Name = "taskList";
+			this.taskList.SelectedIndexChanged += new System.EventHandler(this.taskList_SelectedIndexChanged);
 			// 
 			// orderTypesBox
 			// 
@@ -68,10 +70,11 @@ namespace RepairManModule
 			resources.ApplyResources(this.label1, "label1");
 			this.label1.Name = "label1";
 			// 
-			// descriptionTypes
+			// descriptionOfTask
 			// 
-			resources.ApplyResources(this.descriptionTypes, "descriptionTypes");
-			this.descriptionTypes.Name = "descriptionTypes";
+			resources.ApplyResources(this.descriptionOfTask, "descriptionOfTask");
+			this.descriptionOfTask.Name = "descriptionOfTask";
+			this.descriptionOfTask.ReadOnly = true;
 			// 
 			// label2
 			// 
@@ -115,7 +118,7 @@ namespace RepairManModule
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.descriptionTypes);
+			this.Controls.Add(this.descriptionOfTask);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.orderTypesBox);
 			this.Controls.Add(this.taskList);
@@ -135,7 +138,7 @@ namespace RepairManModule
 		private System.Windows.Forms.ListBox taskList;
 		private System.Windows.Forms.ComboBox orderTypesBox;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox descriptionTypes;
+		private System.Windows.Forms.TextBox descriptionOfTask;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
