@@ -95,7 +95,7 @@ namespace RepairManModule
 			//
 
 			int index_actuality = 0;
-			string curr_actuality = current_task.Actual ? actualities[0] : actualities[1];
+			string curr_actuality = current_task.Actual ? actualities[1] : actualities[0];
 
 			foreach (var act in actualityBox.Items)
 			{
@@ -142,6 +142,8 @@ namespace RepairManModule
 			}
 
 			current_manager.SaveTasks();
+			taskList.DataSource = current_manager.LoadTasks();
+
 			MessageBox.Show("Progress has been marked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
