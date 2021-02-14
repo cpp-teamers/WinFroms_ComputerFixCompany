@@ -294,7 +294,7 @@ namespace ClientModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 615);
+            this.ClientSize = new System.Drawing.Size(544, 615);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.id);
             this.Controls.Add(this.level);

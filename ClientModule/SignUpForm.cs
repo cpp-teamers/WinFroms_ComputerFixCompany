@@ -18,13 +18,12 @@ namespace ClientModule
         ClientDataManager cdm = new ClientDataManager();
         Client c = new Client();
         string regular = @"[a-zA-Z]{2,25}$";
-        string regularNum = "^(?:1[01][0-9]|120|1[7 - 9]|[2 - 9][0 - 9])$";
+        string regularNum = "^[0-9]+$";
         //string unique_Id = "";
         public SignUpForm()
         {
             InitializeComponent();
         }
-
         private void SignUpForm_Load(object sender, EventArgs e)
         {
             name.Text = "Name";
@@ -42,6 +41,9 @@ namespace ClientModule
             id.ForeColor = Color.Red;
 
             password.UseSystemPasswordChar = true;
+            //
+            city.SelectedIndex = 0;
+            block.SelectedIndex = 0;
         }
         // Clear Fields
         private void name_Click(object sender, EventArgs e)
@@ -109,11 +111,21 @@ namespace ClientModule
                 level.Text = "Normal";
                 level.ForeColor = Color.YellowGreen;
             }
-            if (password.Text.Length > 10 && Regex.IsMatch(password.Text, regularNum))
+            if (password.Text.Length > 10 && ContainsNumber(password.Text))
             {
                 level.Text = "Strong";
                 level.ForeColor = Color.DarkGreen;
             }
+        }
+        private bool ContainsNumber(string c)
+        {
+
+            foreach(char letter in c)
+            {
+                if (Char.IsNumber(letter))
+                    return true;
+            }
+            return false;
         }
         //
         private void create_Click(object sender, EventArgs e)
@@ -127,8 +139,12 @@ namespace ClientModule
                     throw new FullNameException("Surname did not pass validation!", surname.Text);
                 else if (!Regex.IsMatch(patronymic.Text, regular))
                     throw new FullNameException("Patronymic did not pass validation!", patronymic.Text);
-                if(!Int32.TryParse(age.Text, out int ageClient))
+                if(!Int32.TryParse(age.Text, out int ageClient) || ageClient > 120)
                     throw new AgeLimitException("Age did not pass validation!", age.Text);
+                if (ageClient > 120)
+                    throw new AgeLimitException("Age exceeded 120 maximum!", age.Text);
+                if (ageClient < 10)
+                    throw new AgeLimitException("You are too young!", age.Text);
                 else if (!Regex.IsMatch(street.Text, regular))
                     throw new ApartmentException("Street did not pass validation!", street.Text);
                 else if (!Regex.IsMatch(apartment.Text, regularNum))
@@ -139,13 +155,13 @@ namespace ClientModule
                 {
                     Client client = new Client();
                     // Assignment fields from textBoxes to object properties
-                     client.AccountData = new AccountData() { Login = id.Text, Password = password.Text };
-                     client.Name = name.Text;
-                     client.Surname = surname.Text;
-                     client.Patronymic = patronymic.Text;
+                    client.AccountData = new AccountData() { Login = id.Text, Password = password.Text };
+                    client.Name = name.Text;
+                    client.Surname = surname.Text;
+                    client.Patronymic = patronymic.Text;
 
-                     client.Adress = new Adress() { City = city.Text, Street = street.Text, NumOfBlock = block.Text, NumOfApartment = Convert.ToInt32(apartment.Text) };
-                     client.Age = ageClient;
+                    client.Adress = new Adress() { City = city.Text, Street = street.Text, NumOfBlock = block.Text, NumOfApartment = Convert.ToInt32(apartment.Text) };
+                    client.Age = ageClient;
                     cdm.SaveClient(client);
                     // Welcome!
                     MessageBox.Show($"Welcome, {client.Name}!");
