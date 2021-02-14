@@ -15,15 +15,16 @@ namespace RepairManModule
 {
 	public partial class AuthorizationForm : Form
 	{
-		RepairManDataManager rmdm;
-		public int Count_of_attempts { get; set; }
+		public readonly RepairManDataManager rmdm;
+		
+		int _count_of_attempts;
 
 
 		public AuthorizationForm()
 		{
 			InitializeComponent();
 			rmdm = new RepairManDataManager();
-			Count_of_attempts = 3;
+			_count_of_attempts = 3;
 		}
 
 		private void LogInOkButton_Click(object sender, EventArgs e)
@@ -53,18 +54,20 @@ namespace RepairManModule
 				{
 					if (rmdm.CheckPassword(name, password))
 					{
-
+						rmdm.LoadDataOfRepM(name);
+						
+						DialogResult = DialogResult.OK;
 					}
 				}
 
 
-				DialogResult = DialogResult.OK;
+				//DialogResult = DialogResult.OK;
 			}
 			catch (PasswordException pass_err)
 			{
-				--Count_of_attempts;
+				--_count_of_attempts;
 
-				MessageBox.Show($"{pass_err.Message}. You've got {Count_of_attempts} shots",
+				MessageBox.Show($"{pass_err.Message}. You've got {_count_of_attempts} shots",
 					"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				
 				ClearFields();
@@ -76,7 +79,7 @@ namespace RepairManModule
 			}
 			finally
 			{
-				if (Count_of_attempts == 0)
+				if (_count_of_attempts == 0)
 				{
 					DialogResult = DialogResult.Abort;
 				}

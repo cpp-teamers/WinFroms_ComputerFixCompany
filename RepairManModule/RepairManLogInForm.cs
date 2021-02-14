@@ -32,6 +32,8 @@ namespace RepairManModule
 
 			if (res == DialogResult.OK)
 			{
+				Form1 main_form = new Form1(af.rmdm);
+				main_form.ShowDialog();
 
 			}
 			else if(res == DialogResult.Abort)
@@ -54,8 +56,10 @@ namespace RepairManModule
 			label3.Visible = false;
 			
 			timer2.Stop();
+
 			label2.Text = DefaultLabel2Text;
 			LogInButton.Enabled = true;
+
 			timer1.Stop();
 
 			label3.Text = "";

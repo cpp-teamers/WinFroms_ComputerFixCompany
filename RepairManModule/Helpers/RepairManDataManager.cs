@@ -13,50 +13,49 @@ using LibraryExceptions;
 
 namespace RepairManModule.Helpers
 {
-    class RepairManDataManager
+    public class RepairManDataManager
     {
-        string path = @"..\..\..\Data\repairmen\";
 		public RepairMan rm;
-		List<Order> curr_order;
-		XmlSerializer serializer;
-		BinaryFormatter bf;
-        
 
-		public RepairManDataManager()
+        string _path = @"..\..\..\Data\repairmen\";
+        XmlSerializer _serializer;
+		BinaryFormatter _bf;
+
+        List<Order> curr_order;
+
+
+        public RepairManDataManager()
         {
-            serializer = new XmlSerializer(typeof(RepairMan));
-            bf = new BinaryFormatter();
-            
-
+            _serializer = new XmlSerializer(typeof(RepairMan));
+            _bf = new BinaryFormatter();
         }
 
-        private void LoadDataOfRepM(string name)
+        public void LoadDataOfRepM(string name)
         {
-            path += $@"{name}\{name}.xml";
+            _path += $@"{name}\{name}.xml";
 
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(_path, FileMode.Open, FileAccess.Read))
             {
-                rm = (RepairMan)serializer.Deserialize(fs);
+                rm = (RepairMan)_serializer.Deserialize(fs);
             }
         }
 
-        private void LoadTasks()
+        public List<Order> LoadTasks()
         {
-            //List<Order> orders = new List<Order>();
             curr_order = new List<Order>();
-
-
 
             foreach (var path in rm.PathsOfOrders)
             {
 
                 using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
-                    curr_order.Add((Order)bf.Deserialize(fs));
+                    curr_order.Add((Order)_bf.Deserialize(fs));
                 }
             }
 
+            return curr_order;
         }
+
         public void SaveTasks()
         {
             //path += @"\vasyan.xml";
@@ -67,7 +66,7 @@ namespace RepairManModule.Helpers
 
                 using (FileStream fs = new FileStream(p, FileMode.Open, FileAccess.Write))
                 {
-                    bf.Serialize(fs, curr_order[j]);
+                    _bf.Serialize(fs, curr_order[j]);
                 }
                 j++;
             }
@@ -115,7 +114,7 @@ namespace RepairManModule.Helpers
         public bool IsValid(string enteredName)
         {
 
-            DirectoryInfo di = new DirectoryInfo(path + enteredName);
+            DirectoryInfo di = new DirectoryInfo(_path + enteredName);
 
 			if (!di.Exists)
 			{
@@ -127,7 +126,7 @@ namespace RepairManModule.Helpers
 
         public bool CheckPassword(string validName, string enteredPass)
 		{
-            XDocument doc = XDocument.Load(path + validName + $@"\{validName}.xml");
+            XDocument doc = XDocument.Load(_path + validName + $@"\{validName}.xml");
             
             XElement rep = doc.Element("RepairMan");
 
