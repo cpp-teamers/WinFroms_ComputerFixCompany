@@ -79,6 +79,7 @@ namespace RepairManModule
 			this.AuthPasswordField.ForeColor = System.Drawing.Color.Black;
 			this.AuthPasswordField.Location = new System.Drawing.Point(34, 140);
 			this.AuthPasswordField.Name = "AuthPasswordField";
+			this.AuthPasswordField.PasswordChar = '*';
 			this.AuthPasswordField.Size = new System.Drawing.Size(220, 35);
 			this.AuthPasswordField.TabIndex = 3;
 			// 

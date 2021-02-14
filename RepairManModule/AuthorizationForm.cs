@@ -32,7 +32,7 @@ namespace RepairManModule
 
 			try
 			{
-				string name = AuthNameField.Text;
+				string name = AuthNameField.Text.Trim();
 				string password = AuthPasswordField.Text;
 
 
@@ -61,7 +61,6 @@ namespace RepairManModule
 				}
 
 
-				//DialogResult = DialogResult.OK;
 			}
 			catch (PasswordException pass_err)
 			{

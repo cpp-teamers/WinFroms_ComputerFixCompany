@@ -21,7 +21,7 @@ namespace RepairManModule.Helpers
         XmlSerializer _serializer;
 		BinaryFormatter _bf;
 
-        List<Order> curr_order;
+        public List<Order> curr_order;
 
 
         public RepairManDataManager()
@@ -58,7 +58,6 @@ namespace RepairManModule.Helpers
 
         public void SaveTasks()
         {
-            //path += @"\vasyan.xml";
             int j = 0;
 
             foreach (string p in rm.PathsOfOrders)
@@ -72,45 +71,6 @@ namespace RepairManModule.Helpers
             }
         }
 
-
-        public bool LogIn()
-        {
-            int chancesToEnterPassword = 3;
-
-            Console.Write("\n>Enter your name: ");
-            string name = Console.ReadLine();
-            name = name.ToLower();
-
-            bool succeed_entry = false;
-
-
-            if (IsValid(name))
-            {
-
-                do
-                {
-                    if (EnterPassword(name))
-                    {
-                        succeed_entry = true;
-                        break;
-                    }
-                    else
-                    {
-                        chancesToEnterPassword--;
-                        Console.Write($"\nSorry! Password is incorrect! You got {chancesToEnterPassword} chances\n\n");
-                    }
-                }
-                while (chancesToEnterPassword != 0);
-
-
-            }
-            else
-            {
-                Console.Write($"Sorry! There is no such person.");
-            }
-
-            return succeed_entry;
-        }
         public bool IsValid(string enteredName)
         {
 
@@ -140,72 +100,5 @@ namespace RepairManModule.Helpers
             return true;
 		}
 
-        private bool EnterPassword(string nameInDir)
-        {
-            bool success = false;
-
-            Console.Write("\n>Password: ");
-            string enteredPassword = Console.ReadLine();
-
-            LoadDataOfRepM(nameInDir);
-
-            if (enteredPassword == rm.AccountData.Password)
-            {
-                success = true;
-            }
-
-            return success;
-        }
-
-        public void DisplayCurrentTasks()
-        {
-
-            LoadTasks();
-
-            foreach (var item in curr_order)
-            {
-                Console.WriteLine(item);
-            }
-        }
-
-        public void MarkTaskReady()
-        {
-            try
-            {
-
-
-                Console.Write("\n> What task you would like to mark as ready: ");
-                Int32.TryParse(Console.ReadLine(), out int choice);
-                //LoadTasks();
-
-                curr_order[choice - 1].Actual = false;
-
-                SaveTasks();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Sorry there is no such position");
-            }
-        }
-        public void MarkInProgress()
-        {
-
-            try
-            {
-
-
-                Console.Write("\n> What task you would like to mark as ready: ");
-                Int32.TryParse(Console.ReadLine(), out int choice);
-                //LoadTasks();
-
-                curr_order[choice - 1].Actual = true;
-
-                SaveTasks();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Sorry there is no such position");
-            }
-        }
     }
 }

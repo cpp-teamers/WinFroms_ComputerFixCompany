@@ -32,9 +32,13 @@ namespace RepairManModule
 
 			if (res == DialogResult.OK)
 			{
+				this.Visible = false;
+
 				Form1 main_form = new Form1(af.rmdm);
 				main_form.ShowDialog();
 
+				this.Visible = true;
+				
 			}
 			else if(res == DialogResult.Abort)
 			{
