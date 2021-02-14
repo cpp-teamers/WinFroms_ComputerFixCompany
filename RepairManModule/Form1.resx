@@ -462,31 +462,28 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="descriptionTypes.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="descriptionTypes.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="descriptionOfTask.Location" type="System.Drawing.Point, System.Drawing">
     <value>329, 291</value>
   </data>
-  <data name="descriptionTypes.Multiline" type="System.Boolean, mscorlib">
+  <data name="descriptionOfTask.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="descriptionTypes.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="descriptionOfTask.Size" type="System.Drawing.Size, System.Drawing">
     <value>486, 151</value>
   </data>
-  <data name="descriptionTypes.TabIndex" type="System.Int32, mscorlib">
+  <data name="descriptionOfTask.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;descriptionTypes.Name" xml:space="preserve">
-    <value>descriptionTypes</value>
+  <data name="&gt;&gt;descriptionOfTask.Name" xml:space="preserve">
+    <value>descriptionOfTask</value>
   </data>
-  <data name="&gt;&gt;descriptionTypes.Type" xml:space="preserve">
+  <data name="&gt;&gt;descriptionOfTask.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;descriptionTypes.Parent" xml:space="preserve">
+  <data name="&gt;&gt;descriptionOfTask.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;descriptionTypes.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;descriptionOfTask.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
