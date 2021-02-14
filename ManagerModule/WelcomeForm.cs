@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace ManagerModule
 {
-    public partial class Form1 : Form
+    public partial class WelcomeForm : Form
     {
-        public Form1()
+        public WelcomeForm()
         {
             InitializeComponent();
+        }
+
+        private void LogInButton_Click(object sender, EventArgs e)
+        {
+            LogInForm logInForm = new LogInForm();
+            logInForm.ShowDialog();
         }
     }
 }
