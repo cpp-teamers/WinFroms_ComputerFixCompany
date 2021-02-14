@@ -52,6 +52,7 @@
     <Compile Include="LogInForm.Designer.cs">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManagerDataManager.cs" />
     <Compile Include="WelcomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +93,12 @@
   <ItemGroup>
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\Manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library1\Library1.csproj">
+      <Project>{e0388e8f-a272-449b-b2d8-7ea438aca0b0}</Project>
+      <Name>Library1</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
