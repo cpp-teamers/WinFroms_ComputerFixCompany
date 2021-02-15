@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library1;
 
 namespace ClientModule
 {
@@ -20,14 +21,28 @@ namespace ClientModule
         private void logIn_Click(object sender, EventArgs e)
         {
             LogInForm logInForm = new LogInForm();
+            var res = logInForm.ShowDialog();
 
-            logInForm.ShowDialog();
+            if(res == DialogResult.OK)
+            {
+                Visible = false;
+
+                LoggedInForm loggedIn = new LoggedInForm();
+                loggedIn.Client = logInForm.Client;
+                loggedIn.ShowDialog();
+
+                
+                this.Visible = true;
+            }
         }
 
         private void signUp_Click(object sender, EventArgs e)
         {
             SignUpForm sign = new SignUpForm();
-            sign.ShowDialog();
+            var res = sign.ShowDialog();
+
+            if (res == DialogResult.OK)
+                Visible = true;
         }
     }
 }
