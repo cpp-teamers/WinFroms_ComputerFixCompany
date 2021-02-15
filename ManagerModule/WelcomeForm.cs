@@ -21,6 +21,17 @@ namespace ManagerModule
         {
             LogInForm logInForm = new LogInForm();
             logInForm.ShowDialog();
+
+            var res = logInForm.DialogResult;
+            if (res == DialogResult.OK)
+            {
+                this.Visible = false;
+
+                MainForm mainForm = new MainForm();
+                mainForm.ShowDialog();
+
+                this.Visible = true;
+            }
         }
     }
 }

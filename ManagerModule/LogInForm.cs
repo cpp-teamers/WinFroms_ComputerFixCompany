@@ -68,7 +68,7 @@ namespace ManagerModule
             }
             else
             {
-                MessageBox.Show("congrat");
+                DialogResult = DialogResult.OK;
             }
         }
     }
