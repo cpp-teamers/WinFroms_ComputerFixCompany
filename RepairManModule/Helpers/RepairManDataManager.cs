@@ -21,7 +21,7 @@ namespace RepairManModule.Helpers
         XmlSerializer _serializer;
 		BinaryFormatter _bf;
 
-        public List<Order> curr_order;
+        public List<Order> curr_order { get; set; }
 
 
         public RepairManDataManager()
