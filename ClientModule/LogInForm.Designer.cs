@@ -34,7 +34,7 @@ namespace ClientModule
             this.logIn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.nameBox = new System.Windows.Forms.TextBox();
+            this.id = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.show = new System.Windows.Forms.CheckBox();
@@ -43,7 +43,7 @@ namespace ClientModule
             // logIn
             // 
             this.logIn.Location = new System.Drawing.Point(40, 168);
-            this.logIn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.logIn.Margin = new System.Windows.Forms.Padding(6);
             this.logIn.Name = "logIn";
             this.logIn.Size = new System.Drawing.Size(384, 32);
             this.logIn.TabIndex = 0;
@@ -54,12 +54,12 @@ namespace ClientModule
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(102, 36);
+            this.label1.Location = new System.Drawing.Point(136, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 24);
+            this.label1.Size = new System.Drawing.Size(32, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Name:";
+            this.label1.Text = "ID:";
             // 
             // label2
             // 
@@ -71,18 +71,18 @@ namespace ClientModule
             this.label2.TabIndex = 2;
             this.label2.Text = "Password:";
             // 
-            // nameBox
+            // id
             // 
-            this.nameBox.Location = new System.Drawing.Point(180, 34);
-            this.nameBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(208, 29);
-            this.nameBox.TabIndex = 3;
+            this.id.Location = new System.Drawing.Point(180, 34);
+            this.id.Margin = new System.Windows.Forms.Padding(6);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(208, 29);
+            this.id.TabIndex = 3;
             // 
             // passwordBox
             // 
             this.passwordBox.Location = new System.Drawing.Point(180, 79);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(6);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(208, 29);
             this.passwordBox.TabIndex = 4;
@@ -110,13 +110,13 @@ namespace ClientModule
             this.ClientSize = new System.Drawing.Size(467, 230);
             this.Controls.Add(this.show);
             this.Controls.Add(this.passwordBox);
-            this.Controls.Add(this.nameBox);
+            this.Controls.Add(this.id);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logIn);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "LogInForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -132,7 +132,7 @@ namespace ClientModule
         private System.Windows.Forms.Button logIn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.TextBox id;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.CheckBox show;

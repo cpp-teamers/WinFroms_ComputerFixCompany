@@ -46,8 +46,10 @@
     <Compile Include="BaseException.cs" />
     <Compile Include="CharException.cs" />
     <Compile Include="FullNameException.cs" />
+    <Compile Include="IdException.cs" />
     <Compile Include="IntException.cs" />
     <Compile Include="NumberException.cs" />
+    <Compile Include="OrderException.cs" />
     <Compile Include="PasswordException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringException.cs" />

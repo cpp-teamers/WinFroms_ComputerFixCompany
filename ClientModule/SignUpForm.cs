@@ -19,7 +19,6 @@ namespace ClientModule
         Client c = new Client();
         string regular = @"[a-zA-Z]{2,25}$";
         string regularNum = "^[0-9]+$";
-        //string unique_Id = "";
         public SignUpForm()
         {
             InitializeComponent();
