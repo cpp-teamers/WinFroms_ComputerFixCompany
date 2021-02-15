@@ -46,6 +46,8 @@ namespace RepairManModule
 			this.InProcessRadioB = new System.Windows.Forms.RadioButton();
 			this.readyRadioB = new System.Windows.Forms.RadioButton();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.ReadyTaskCheck = new System.Windows.Forms.CheckBox();
+			this.InProcessTaskCheck = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -141,10 +143,32 @@ namespace RepairManModule
 			this.timer1.Interval = 3000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
+			// ReadyTaskCheck
+			// 
+			resources.ApplyResources(this.ReadyTaskCheck, "ReadyTaskCheck");
+			this.ReadyTaskCheck.Checked = true;
+			this.ReadyTaskCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.ReadyTaskCheck.Name = "ReadyTaskCheck";
+			this.ReadyTaskCheck.UseVisualStyleBackColor = true;
+			this.ReadyTaskCheck.CheckedChanged += new System.EventHandler(this.ReadyTaskCheck_CheckedChanged);
+			this.ReadyTaskCheck.Click += new System.EventHandler(this.ReadyTaskCheck_Click);
+			// 
+			// InProcessTaskCheck
+			// 
+			resources.ApplyResources(this.InProcessTaskCheck, "InProcessTaskCheck");
+			this.InProcessTaskCheck.Checked = true;
+			this.InProcessTaskCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.InProcessTaskCheck.Name = "InProcessTaskCheck";
+			this.InProcessTaskCheck.UseVisualStyleBackColor = true;
+			this.InProcessTaskCheck.CheckedChanged += new System.EventHandler(this.InProcessTaskCheck_CheckedChanged);
+			this.InProcessTaskCheck.Click += new System.EventHandler(this.InProcessTaskCheck_Click);
+			// 
 			// Form1
 			// 
 			resources.ApplyResources(this, "$this");
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.InProcessTaskCheck);
+			this.Controls.Add(this.ReadyTaskCheck);
 			this.Controls.Add(this.InProcessRadioB);
 			this.Controls.Add(this.readyRadioB);
 			this.Controls.Add(this.MarkTasksProgress);
@@ -186,6 +210,8 @@ namespace RepairManModule
 		private System.Windows.Forms.RadioButton InProcessRadioB;
 		private System.Windows.Forms.RadioButton readyRadioB;
 		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.CheckBox ReadyTaskCheck;
+		private System.Windows.Forms.CheckBox InProcessTaskCheck;
 	}
 }
 

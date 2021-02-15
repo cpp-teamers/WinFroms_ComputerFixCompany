@@ -25,6 +25,8 @@ namespace RepairManModule
 		bool first_Ready_RadioClick = true;
 		bool first_InProc_RadioClick = true;
 
+		
+
 		public Form1(in RepairManDataManager entry_Manager)
 		{
             InitializeComponent();
@@ -54,9 +56,21 @@ namespace RepairManModule
 			// directed to account with 0 tasks !1!
 			if (taskList.Items.Count == 0)
 			{
-				readyRadioB.Enabled = false;
-				InProcessRadioB.Enabled = false;
+				SetDeafultWindowView();
 			}
+		}
+
+		void SetDeafultWindowView()
+		{
+			orderTypesBox.SelectedIndex = 0;
+			actualityBox.SelectedIndex = 0;
+
+			descriptionOfTask.Clear();
+
+			readyRadioB.Enabled = false;
+			InProcessRadioB.Enabled = false;
+
+			MarkTasksProgress.Enabled = false;
 		}
 
 		void LoadDataToListBox()
@@ -130,19 +144,37 @@ namespace RepairManModule
 			}
 		}
 
+		
+
 		private void MarkTasksProgress_Click(object sender, EventArgs e)
 		{
+			Order current_item = taskList.SelectedItem as Order;
+
+			int counter = 0;
+
+			foreach (var o in current_manager.curr_order)
+			{
+				if (current_item.DeadLine == o.DeadLine)
+				{
+					break;
+				}
+				counter++;
+			}
+
+
 			if (readyRadioB.Checked)
 			{
-				current_manager.curr_order[taskList.SelectedIndex].Actual = false;
+				current_manager.curr_order[counter].Actual = false;
 			}
 			else
 			{
-				current_manager.curr_order[taskList.SelectedIndex].Actual = true;
+				current_manager.curr_order[counter].Actual = true;
 			}
 
 			current_manager.SaveTasks();
-			taskList.DataSource = current_manager.LoadTasks();
+			current_manager.LoadTasks();
+
+			CheckBoxCheckAndFilter();
 
 			MessageBox.Show("Progress has been marked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
@@ -155,7 +187,7 @@ namespace RepairManModule
 			}
 			else
 			{
-				UnableMaskProgressButton();
+				UnableTaskProgressButton();
 			}
 
 
@@ -169,11 +201,11 @@ namespace RepairManModule
 			}
 			else
 			{
-				UnableMaskProgressButton();
+				UnableTaskProgressButton();
 			}
 		}
 
-		void UnableMaskProgressButton()
+		void UnableTaskProgressButton()
 		{
 			MarkTasksProgress.Enabled = true;
 			timer1.Start();
@@ -185,6 +217,51 @@ namespace RepairManModule
 			timer1.Stop();
 		}
 
-		
+		private void ReadyTaskCheck_CheckedChanged(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void InProcessTaskCheck_CheckedChanged(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void ReadyTaskCheck_Click(object sender, EventArgs e)
+		{
+			CheckBoxCheckAndFilter();
+		}
+
+		private void InProcessTaskCheck_Click(object sender, EventArgs e)
+		{
+			CheckBoxCheckAndFilter();
+		}
+
+		void CheckBoxCheckAndFilter()
+		{
+			var filtered_List = new List<Order>();
+
+
+			if (ReadyTaskCheck.Checked && InProcessTaskCheck.Checked)
+			{
+				taskList.DataSource = current_manager.curr_order;
+			}
+			else if (ReadyTaskCheck.Checked)
+			{
+				filtered_List = current_manager.curr_order.Where(o => o.Actual == false).ToList();
+				taskList.DataSource = filtered_List;
+			}
+			else if (InProcessTaskCheck.Checked)
+			{
+				filtered_List = current_manager.curr_order.Where(o => o.Actual == true).ToList();
+				taskList.DataSource = filtered_List;
+			}
+			else
+			{
+				taskList.DataSource = filtered_List;
+				SetDeafultWindowView();
+			}
+		}
+
 	}
 }
