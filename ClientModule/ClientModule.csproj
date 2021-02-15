@@ -133,14 +133,18 @@
   <ItemGroup>
     <Content Include="Images\client.ico" />
     <Content Include="Images\clientImageIco.png" />
+    <Content Include="Images\create.ico" />
     <Content Include="Images\happyPC.png" />
     <Content Include="Images\happyyyyPC.jpg" />
     <Content Include="Images\happy_icon.ico" />
     <Content Include="Images\logInButton.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\new Order.png" />
+    <Content Include="Images\newOr.png" />
     <Content Include="Images\settings-min-min.png" />
     <Content Include="Images\settings-min.png" />
     <Content Include="Images\settings.png" />
+    <Content Include="Images\signUp.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

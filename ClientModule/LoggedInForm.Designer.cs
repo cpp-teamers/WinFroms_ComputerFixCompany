@@ -37,10 +37,10 @@ namespace ClientModule
             this.create = new System.Windows.Forms.Button();
             this.time = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.settings = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.orderDetailsLabel = new System.Windows.Forms.Label();
             this.picture = new System.Windows.Forms.PictureBox();
-            this.settings = new System.Windows.Forms.Button();
             this.orderDetails = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
@@ -111,6 +111,16 @@ namespace ClientModule
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
+            // settings
+            // 
+            this.settings.BackgroundImage = global::ClientModule.Properties.Resources.settings_min_min1;
+            this.settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.settings.Location = new System.Drawing.Point(757, 12);
+            this.settings.Name = "settings";
+            this.settings.Size = new System.Drawing.Size(37, 36);
+            this.settings.TabIndex = 8;
+            this.settings.UseVisualStyleBackColor = true;
+            // 
             // timer
             // 
             this.timer.Interval = 1000;
@@ -136,16 +146,6 @@ namespace ClientModule
             this.picture.TabIndex = 13;
             this.picture.TabStop = false;
             // 
-            // settings
-            // 
-            this.settings.BackgroundImage = global::ClientModule.Properties.Resources.settings_min_min1;
-            this.settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.settings.Location = new System.Drawing.Point(757, 12);
-            this.settings.Name = "settings";
-            this.settings.Size = new System.Drawing.Size(37, 36);
-            this.settings.TabIndex = 8;
-            this.settings.UseVisualStyleBackColor = true;
-            // 
             // orderDetails
             // 
             this.orderDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -167,6 +167,7 @@ namespace ClientModule
             this.Controls.Add(this.create);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LoggedInForm";

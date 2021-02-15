@@ -67,9 +67,7 @@ namespace ClientModule
                     }
                 }
                 else
-                {
                     Visible = false;
-                }
             }
             catch(IdException Id_err)
             {

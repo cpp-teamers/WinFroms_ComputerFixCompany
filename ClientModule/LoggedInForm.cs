@@ -29,13 +29,22 @@ namespace ClientModule
             cdm.ShowAllOrders(Client.AccountData.Login, orders);
             time.Text = DateTime.Now.ToString();
 
+            LoadOrders(orders);
+            // Start time
+            timer.Start();
+            // 
+            orderDetailsLabel.Visible = false;
+            orderDetails.Visible = false;
+        }
+        private void LoadOrders(List<Order> orders)
+        {
             if (orders != null)
             {
                 int count = 0;
                 foreach (var order in orders)
                 {
                     listView.Items.Add(order.Description);
-                    if (order.Actual)
+                    if (!order.Actual)
                         listView.Items[count].ForeColor = Color.DarkGreen;
                     else
                         listView.Items[count].ForeColor = Color.Red;
@@ -44,13 +53,7 @@ namespace ClientModule
             }
             else
                 listView.Items[0].Text = "You haven't got an orders yet!";
-            // Start time
-            timer.Start();
-            // 
-            orderDetailsLabel.Visible = false;
-            orderDetails.Visible = false;
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             time.Text = DateTime.Now.ToString();
@@ -64,11 +67,13 @@ namespace ClientModule
 
             index = listView.FocusedItem.Index;
             orderDetails.Text = $" Description: {orders[index].Description}." +
-                $" \r\n Deadline: {orders[index].DeadLine}. \r\n Order type: {orders[index].OrderType}.";
+                $" \r\n Deadline: {orders[index].DeadLine.ToShortDateString()}. \r\n Order type: {orders[index].OrderType}.";
             if (orders[index].Actual)
-                orderDetails.Text += "\r\n Done";
+                orderDetails.Text += "\r\n Not done";
             else
-                orderDetails.Text += "\r\n Not Done";
+                orderDetails.Text += "\r\n Done";
+
+            listView.Update();
         }
 
         private void LoggedInForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -87,7 +92,16 @@ namespace ClientModule
 
         private void create_Click(object sender, EventArgs e)
         {
+            CreateOrderForm cof = new CreateOrderForm();
+            cof.ShowDialog();
+            if(cof.DialogResult == DialogResult.OK)
+            {
+                orders.Add(cof.Order);
+                cdm.SaveOrder(Client.AccountData.Login, cof.Order);
 
+                listView.Items.Clear();
+                LoadOrders(orders);
+            }
         }
     }
 }
